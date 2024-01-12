@@ -78,8 +78,6 @@ public class StudentLeave extends JFrame implements ActionListener {
         add(cancel);
 
 
-
-
         setSize(500,500);
         setLocation(400,100);
         setLayout(null);

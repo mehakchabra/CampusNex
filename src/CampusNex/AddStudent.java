@@ -8,20 +8,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
-public class AddFaculty extends JFrame implements ActionListener {
+public class AddStudent extends JFrame implements ActionListener {
     Random ran = new Random();
     long f4 = Math.abs((ran.nextLong() % 9000L) + 1000L);
-    JLabel emp;
-    JDateChooser cdob;
-    JTextField facultyName, facultyFatherName, textAddress, textPhone, textEmail, textM10, textM12, textAADHAR;
-    JComboBox courseBox, departmentBox;
+    JLabel stu;
+    JDateChooser sdob;
+    JTextField studentName, studentFatherName, textAddress, textPhone, textEmail, textM10, textM12, textAADHAR;
+    JComboBox courseBox, branchBox;
     JButton submit,cancel;
-
-    AddFaculty(){
+    AddStudent(){
         getContentPane().setBackground(new Color(128,176,255));
 
         //heading
-        JLabel heading = new JLabel("New Teacher Details");
+        JLabel heading = new JLabel("New Student Details");
         heading.setBounds(270,30,500,50);
         heading.setFont(new Font("serif",Font.BOLD,30));
         add(heading);
@@ -32,9 +31,9 @@ public class AddFaculty extends JFrame implements ActionListener {
         name.setFont(new Font("serif",Font.BOLD,20));
         add(name);
 
-        facultyName = new JTextField();
-        facultyName.setBounds(185,150,200,30);
-        add(facultyName);
+        studentName = new JTextField();
+        studentName.setBounds(185,150,200,30);
+        add(studentName);
 
 
         //father name
@@ -43,20 +42,20 @@ public class AddFaculty extends JFrame implements ActionListener {
         fName.setFont(new Font("serif",Font.BOLD,20));
         add(fName);
 
-        facultyFatherName = new JTextField();
-        facultyFatherName.setBounds(575,150,200,30);
-        add(facultyFatherName);
+        studentFatherName = new JTextField();
+        studentFatherName.setBounds(575,150,200,30);
+        add(studentFatherName);
 
         //employee id
-        JLabel empId = new JLabel("Employee ID");
-        empId.setBounds(50,200,200,30);
-        empId.setFont(new Font("serif",Font.BOLD,20));
-        add(empId);
+        JLabel stuId = new JLabel("Roll No.");
+        stuId.setBounds(50,200,200,30);
+        stuId.setFont(new Font("serif",Font.BOLD,20));
+        add(stuId);
 
-        emp = new JLabel("1502"+f4);
-        emp.setBounds(200,200,200,30);
-        emp.setFont(new Font("serif",Font.BOLD,20));
-        add(emp);
+        stu = new JLabel("2024"+f4);
+        stu.setBounds(200,200,200,30);
+        stu.setFont(new Font("serif",Font.BOLD,20));
+        add(stu);
 
         //Date of Birth
         JLabel dob = new JLabel("Date of Birth");
@@ -64,9 +63,9 @@ public class AddFaculty extends JFrame implements ActionListener {
         dob.setFont(new Font("serif",Font.BOLD,20));
         add(dob);
 
-        cdob = new JDateChooser();
-        cdob.setBounds(575,200,200,30);
-        add(cdob);
+        sdob = new JDateChooser();
+        sdob.setBounds(575,200,200,30);
+        add(sdob);
 
         //address
         JLabel address = new JLabel("Address");
@@ -129,28 +128,28 @@ public class AddFaculty extends JFrame implements ActionListener {
         add(textAADHAR);
 
         //Qualification
-        JLabel qualification = new JLabel("Qualification");
-        qualification.setBounds(50,400,200,30);
-        qualification.setFont(new Font("serif",Font.BOLD,20));
-        add(qualification);
+        JLabel degree = new JLabel("Course");
+        degree.setBounds(50,400,200,30);
+        degree.setFont(new Font("serif",Font.BOLD,20));
+        add(degree);
 
-        String course[] = {"B.Tech","BBA","BCA","BSC","MSC","MBS","MCA","M.Com.","BA","MA"};
-        courseBox = new JComboBox(course);
+        String Degree[] = {"B.Tech","BBA","BCA","BSC","MSC","MBS","MCA","M.Com.","BA","MA"};
+        courseBox = new JComboBox(Degree);
         courseBox.setBounds(185,400,200,30);
         courseBox.setBackground(Color.WHITE);
         add(courseBox);
 
         //department
-        JLabel department = new JLabel("Department");
-        department.setBounds(440,400,200,30);
-        department.setFont(new Font("serif",Font.BOLD,20));
-        add(department);
+        JLabel branch = new JLabel("Branch");
+        branch.setBounds(440,400,200,30);
+        branch.setFont(new Font("serif",Font.BOLD,20));
+        add(branch);
 
-        String Department[] = {"Computer Science", "Electronics", "Mechanical","Civil","IT"};
-        departmentBox = new JComboBox(Department);
-        departmentBox.setBounds(575,400,200,30);
-        departmentBox.setBackground(Color.WHITE);
-        add(departmentBox);
+        String Branch[] = {"Computer Science", "Electronics", "Mechanical","Civil","IT"};
+        branchBox = new JComboBox(Branch);
+        branchBox.setBounds(575,400,200,30);
+        branchBox.setBackground(Color.WHITE);
+        add(branchBox);
 
         //submit button
         submit = new JButton("Submit");
@@ -174,26 +173,27 @@ public class AddFaculty extends JFrame implements ActionListener {
         setLayout(null);
         setVisible(true);
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == submit){
             //facultyName, facultyFatherName, textAddress, textPhone, textEmail, textM10, textM12, textAADHAR;
-            String name = facultyName.getText();
-            String fname = facultyFatherName.getText();
-            String empid = emp.getText();
-            String dob = ((JTextField) cdob.getDateEditor().getUiComponent()).getText();
+            String name = studentName.getText();
+            String fname = studentFatherName.getText();
+            String rollno = stu.getText();
+            String dob = ((JTextField) sdob.getDateEditor().getUiComponent()).getText();
             String address = textAddress.getText();
             String phone = textPhone.getText();
             String email = textEmail.getText();
             String x = textM10.getText();
             String xii = textM12.getText();
             String aadhar = textAADHAR.getText();
-            String course = (String) courseBox.getSelectedItem();
-            String department = (String) departmentBox.getSelectedItem();
+            String degree = (String) courseBox.getSelectedItem();
+            String branch = (String) branchBox.getSelectedItem();
 
             try {
 
-                String q = "INSERT INTO teacher VALUES('"+name+"','"+fname+"', '"+empid+"', '"+dob+"','"+address+"', '"+phone+"', '"+email+"','"+x+"', '"+xii+"', '"+aadhar+"', '"+course+"', '"+department+"')";
+                String q = "INSERT INTO student VALUES('"+name+"','"+fname+"', '"+rollno+"', '"+dob+"','"+address+"', '"+phone+"', '"+email+"','"+x+"', '"+xii+"', '"+aadhar+"', '"+degree+"', '"+branch+"')";
                 Connectivity c = new Connectivity();
                 c.statement.executeUpdate(q);
                 JOptionPane.showMessageDialog(null,"Details Inserted");
@@ -210,6 +210,6 @@ public class AddFaculty extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new AddFaculty();
+        new AddStudent();
     }
 }

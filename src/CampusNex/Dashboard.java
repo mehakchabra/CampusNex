@@ -13,6 +13,12 @@ public class Dashboard extends JFrame implements ActionListener {
         JLabel img = new JLabel(i3);
         add(img);
 
+//        ImageIcon i11 = new ImageIcon(ClassLoader.getSystemResource("icon/VIT Bhopal.jpeg"));
+//        Image i22 = i11.getImage().getScaledInstance(1200, 550, Image.SCALE_DEFAULT);
+//        ImageIcon i33 = new ImageIcon(i22);
+//        JLabel image = new JLabel(i33);
+//        add(image);
+
         JMenuBar mb = new JMenuBar();
 
         //new Info
@@ -22,10 +28,12 @@ public class Dashboard extends JFrame implements ActionListener {
 
         JMenuItem facultyInfo = new JMenuItem("New Faculty Information");
         facultyInfo.setBackground(Color.white);
+        facultyInfo.addActionListener(this);
         newInfo.add(facultyInfo);
 
         JMenuItem studentInfo = new JMenuItem("New Student Information");
         studentInfo.setBackground(Color.white);
+        studentInfo.addActionListener(this);
         newInfo.add(studentInfo);
 
         //details
@@ -35,10 +43,12 @@ public class Dashboard extends JFrame implements ActionListener {
 
         JMenuItem facultyDetails = new JMenuItem("View Faculty Details");
         facultyDetails.setBackground(Color.white);
+        facultyDetails.addActionListener(this);
         details.add(facultyDetails);
 
         JMenuItem studentDetails = new JMenuItem("View Student Details");
         studentDetails.setBackground(Color.white);
+        studentDetails.addActionListener(this);
         details.add(studentDetails);
 
         //leave
@@ -48,10 +58,12 @@ public class Dashboard extends JFrame implements ActionListener {
 
         JMenuItem facultyLeave = new JMenuItem("Faculty Leave");
         facultyLeave.setBackground(Color.white);
+        facultyLeave.addActionListener(this);
         leave.add(facultyLeave);
 
         JMenuItem studentLeave = new JMenuItem("Student Leave");
         studentLeave.setBackground(Color.white);
+        studentLeave.addActionListener(this);
         leave.add(studentLeave);
 
         //leave details
@@ -61,10 +73,12 @@ public class Dashboard extends JFrame implements ActionListener {
 
         JMenuItem facultyLeaveDetails = new JMenuItem("Faculty Leave Details");
         facultyLeaveDetails.setBackground(Color.white);
+        facultyLeaveDetails.addActionListener(this);
         leaveDetails.add(facultyLeaveDetails);
 
         JMenuItem studentLeaveDetails = new JMenuItem("Student Leave Details");
         studentLeaveDetails.setBackground(Color.white);
+        studentLeaveDetails.addActionListener(this);
         leaveDetails.add(studentLeaveDetails);
 
         //Examination
@@ -74,10 +88,12 @@ public class Dashboard extends JFrame implements ActionListener {
 
         JMenuItem examinationDetails = new JMenuItem("Examination Result");
         examinationDetails.setBackground(Color.white);
+        examinationDetails.addActionListener(this);
         exam.add(examinationDetails);
 
         JMenuItem enterMarks = new JMenuItem("Enter Marks");
         enterMarks.setBackground(Color.white);
+        enterMarks.addActionListener(this);
         exam.add(enterMarks);
 
         //update Information
@@ -87,10 +103,12 @@ public class Dashboard extends JFrame implements ActionListener {
 
         JMenuItem updateFacultyInfo = new JMenuItem("Update Faculty Details");
         updateFacultyInfo.setBackground(Color.white);
+        updateFacultyInfo.addActionListener(this);
         updateInfo.add(updateFacultyInfo);
 
         JMenuItem updateStudentInfo = new JMenuItem("Update Student Details");
         updateStudentInfo.setBackground(Color.white);
+        updateStudentInfo.addActionListener(this);
         updateInfo.add(updateStudentInfo);
 
         //Fees
@@ -100,10 +118,12 @@ public class Dashboard extends JFrame implements ActionListener {
 
         JMenuItem feeStructure = new JMenuItem("Fee Structure");
         feeStructure.setBackground(Color.white);
+        feeStructure.addActionListener(this);
         fee.add(feeStructure);
 
         JMenuItem feeForm = new JMenuItem("Student Fee Form");
         feeForm.setBackground(Color.white);
+        feeForm.addActionListener(this);
         fee.add(feeForm);
 
         //utility
@@ -128,6 +148,7 @@ public class Dashboard extends JFrame implements ActionListener {
 
         JMenuItem About = new JMenuItem("About");
         About.setBackground(Color.white);
+        About.addActionListener(this);
         about.add(About);
 
         //Exit
@@ -159,12 +180,58 @@ public class Dashboard extends JFrame implements ActionListener {
             }catch (Exception E){
                 E.printStackTrace();
             }
-        } else if (sm.equals("Notepad")) {
+        } 
+        else if (sm.equals("Notepad")) {
             try {
                 Runtime.getRuntime().exec("notepad.exe");
             }catch (Exception E){
                 E.printStackTrace();
             }
+        } 
+        else if (sm.equals("New Faculty Information")) {
+            new AddFaculty();
+        }
+        else if (sm.equals("New Student Information")) {
+            new AddStudent();
+        }
+        else if (sm.equals("View Faculty Details")) {
+            new FacultyDetails();
+        }
+        else if (sm.equals("View Student Details")) {
+            new StudentDetails();
+        }
+        else if (sm.equals("Faculty Leave")) {
+            new FacultyLeave();
+        }
+        else if (sm.equals("Student Leave")) {
+            new StudentLeave();
+        }
+        else if (sm.equals("Faculty Leave Details")) {
+            new FacultyLeaveDetails();
+        }
+        else if (sm.equals("Student Leave Details")) {
+            new StudentLeaveDetails();
+        }
+        else if (sm.equals("Update Faculty Details")) {
+            new UpdateFaculty();
+        }
+        else if (sm.equals("Update Student Details")) {
+            new UpdateStudent();
+        }
+        else if (sm.equals("Enter Marks")) {
+            new EnterMarks();
+        }
+        else if (sm.equals("Examination Result")) {
+            new ExaminationDetails();
+        }
+        else if (sm.equals("Fee Structure")) {
+            new FeeStructure();
+        }
+        else if (sm.equals("Student Fee Form")) {
+            new StudentFeeForm();
+        }
+        else if (sm.equals("About")) {
+            new About();
         }
     }
     public static void main(String[] args) {

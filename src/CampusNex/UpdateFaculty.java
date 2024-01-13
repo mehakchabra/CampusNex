@@ -9,9 +9,9 @@ import java.awt.event.ItemListener;
 import java.sql.ResultSet;
 
 public class UpdateFaculty extends JFrame implements ActionListener {
-    JTextField textAddress,textPhone,textemail,textAadhar,textdegree,textbranch;
+    JTextField textAddress,textPhone,textemail,textAadhar,texteducation,textdepartment;
     JLabel empText;
-    JButton submit, cancel;
+    JButton update, cancel;
     Choice choiceEID;
     UpdateFaculty(){
 
@@ -138,9 +138,9 @@ public class UpdateFaculty extends JFrame implements ActionListener {
         Qualification.setFont(new Font("serif",Font.BOLD,20));
         add(Qualification);
 
-        textdegree = new JTextField();
-        textdegree.setBounds(200,400,150,30);
-        add(textdegree);
+        texteducation = new JTextField();
+        texteducation.setBounds(200,400,150,30);
+        add(texteducation);
 
 
         JLabel Department = new JLabel("Department");
@@ -148,9 +148,9 @@ public class UpdateFaculty extends JFrame implements ActionListener {
         Department.setFont(new Font("serif",Font.BOLD,20));
         add(Department);
 
-        textbranch = new JTextField();
-        textbranch.setBounds(600,400,150,30);
-        add(textbranch);
+        textdepartment = new JTextField();
+        textdepartment.setBounds(600,400,150,30);
+        add(textdepartment);
 
         try{
             Connectivity c = new Connectivity();
@@ -167,8 +167,8 @@ public class UpdateFaculty extends JFrame implements ActionListener {
                 textM12.setText(resultSet.getString("class_xii"));
                 textAadhar.setText(resultSet.getString("aadhar"));
                 empText.setText(resultSet.getString("empid"));
-                textdegree.setText(resultSet.getString("education"));
-                textbranch.setText(resultSet.getString("department"));
+                texteducation.setText(resultSet.getString("education"));
+                textdepartment.setText(resultSet.getString("department"));
             }
 
         }catch (Exception E){
@@ -192,9 +192,9 @@ public class UpdateFaculty extends JFrame implements ActionListener {
                         textM10.setText(resultSet.getString("class_x"));
                         textM12.setText(resultSet.getString("class_xii"));
                         textAadhar.setText(resultSet.getString("aadhar"));
-                        empText.setText(resultSet.getString("empId"));
-                        textdegree.setText(resultSet.getString("education"));
-                        textbranch.setText(resultSet.getString("department"));
+                        empText.setText(resultSet.getString("empid"));
+                        texteducation.setText(resultSet.getString("education"));
+                        textdepartment.setText(resultSet.getString("department"));
                     }
                 }catch (Exception E){
                     E.printStackTrace();
@@ -204,12 +204,12 @@ public class UpdateFaculty extends JFrame implements ActionListener {
 
 
 
-        submit = new JButton("Update");
-        submit.setBounds(300,500,120,30);
-        submit.setBackground(Color.black);
-        submit.setForeground(Color.white);
-        submit.addActionListener(this);
-        add(submit);
+        update = new JButton("Update");
+        update.setBounds(300,500,120,30);
+        update.setBackground(Color.black);
+        update.setForeground(Color.white);
+        update.addActionListener(this);
+        add(update);
 
         cancel = new JButton("Cancel");
         cancel.setBounds(450,500,120,30);
@@ -227,16 +227,16 @@ public class UpdateFaculty extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == submit){
+        if (e.getSource() == update){
             String empid = empText.getText();
             String address = textAddress.getText();
             String phone = textPhone.getText();
             String email = textemail.getText();
-            String degree = textdegree.getText();
-            String branch = textbranch.getText();
+            String education = texteducation.getText();
+            String department = textdepartment.getText();
 
             try {
-                String Q = "update teacher set address = '"+address+"', phone = '"+phone+"', email = '"+email+"', education = '"+degree+"', department = '"+branch+"' where empId = '"+empid+"'";
+                String Q = "update teacher set address = '"+address+"', phone = '"+phone+"', email = '"+email+"', education = '"+education+"', department = '"+department+"' where empId = '"+empid+"'";
                 Connectivity c = new Connectivity();
                 c.statement.executeUpdate(Q);
 
